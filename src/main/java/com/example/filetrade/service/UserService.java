@@ -24,4 +24,12 @@ public class UserService {
     public User findUserByUser_id(String user_id){
         return userDao.findUserByUser_id(user_id);
     }
+
+    //login
+    public String login(User user){
+        return userDao.login(user);
+    }
+
+    //修改信息
+    public int updateOther(User user){return userDao.updateOther(user);}
 }

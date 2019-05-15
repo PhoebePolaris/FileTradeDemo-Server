@@ -21,10 +21,10 @@ public class UserDao {
 
     }
 
-    //update
+    //update，更新积分
     public int update(User user) {
-        return jdbcTemplate.update("UPDATE user SET user_name = ? , credit = ? WHERE user_id=?",
-                user.getUser_name(),user.getCredit(),user.getUser_id());
+        return jdbcTemplate.update("UPDATE user SET  credit = ? WHERE user_id=?",
+                user.getCredit(),user.getUser_id());
     }
 
     //search
@@ -36,4 +36,27 @@ public class UserDao {
             return null;
         }
     }
+
+    //login
+    public String login(User user) {
+        List<User> list = jdbcTemplate.query("SELECT * FROM user WHERE phone_num = ?", new Object[]{user.getPhone_num()}, new BeanPropertyRowMapper(User.class));
+        if(list!=null && list.size()>0){
+            User s= list.get(0);
+            if(user.getPassword().equals(s.getPassword())){
+                return s.toString();
+            }
+            else{
+                return "密码错误！";
+            }
+        }else{
+            return "用户不存在！";
+        }
+    }
+
+    //修改信息
+    public int updateOther(User user) {
+        return jdbcTemplate.update("UPDATE user SET password = ?,user_name=?,phone_num=?  WHERE user_id=?",
+                user.getPassword(),user.getUser_name(),user.getPhone_num(),user.getUser_id());
+    }
+
 }

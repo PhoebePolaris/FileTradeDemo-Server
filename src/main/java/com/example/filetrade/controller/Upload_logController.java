@@ -19,12 +19,12 @@ public class Upload_logController {
 
     //add
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String post(@RequestParam(value = "file_id") String file_id,
-                       @RequestParam(value = "user_id")String user_id) {
-        Upload_log upload_log = new Upload_log();
-        upload_log.setFile_id(file_id);
-        upload_log.setUser_id(user_id);
-        upload_log.setLog_id(UUID.randomUUID().toString().replaceAll("-", ""));
+    public String post(@RequestBody Upload_log upload_log){
+//            @RequestParam(value = "file_id") String file_id,
+//                       @RequestParam(value = "user_id")String user_id) {
+//        Upload_log upload_log = new Upload_log();
+//        upload_log.setFile_id(file_id);
+//        upload_log.setUser_id(user_id);
         int t = upload_logService.add(upload_log);
         if (t == 1) {
             return upload_log.toString();

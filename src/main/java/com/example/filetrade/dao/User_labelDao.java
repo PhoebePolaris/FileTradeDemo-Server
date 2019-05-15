@@ -20,15 +20,15 @@ public class User_labelDao {
 
     //add user_label
     public int add(User_label user_label) {
-        return jdbcTemplate.update("INSERT INTO user_label(label,user_id) VALUES (?, ?)",
-                user_label.getLabel(),user_label.getUser_id());
+        return jdbcTemplate.update("INSERT INTO user_label(user_id,label_1,label_2,label_3,label_4) VALUES (?, ?, ?, ?, ?)",
+               user_label.getUser_id(),user_label.getLabel_1(),user_label.getLabel_2(),user_label.getLabel_3(),user_label.getLabel_4());
 
     }
 
     //update
     public int update(User_label user_label) {
-        return jdbcTemplate.update("UPDATE user_label SET label = ?  WHERE user_id=?",
-                user_label.getLabel(),user_label.getUser_id());
+        return jdbcTemplate.update("UPDATE user_label SET label_1 = ?,label_2=?,label_3=?,label_4=?  WHERE user_id=?",
+                user_label.getLabel_1(),user_label.getLabel_2(),user_label.getLabel_3(),user_label.getLabel_4(),user_label.getUser_id());
     }
 
     //search

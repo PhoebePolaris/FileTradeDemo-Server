@@ -19,12 +19,7 @@ public class Collect_logController {
 
     //add
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String post(@RequestParam(value = "file_id") String file_id,
-                       @RequestParam(value = "user_id")String user_id) {
-        Collect_log collect_log = new Collect_log();
-        collect_log.setFile_id(file_id);
-        collect_log.setUser_id(user_id);
-        collect_log.setLog_id(UUID.randomUUID().toString().replaceAll("-", ""));
+    public String post(@RequestBody Collect_log collect_log){
         int t = collect_logService.add(collect_log);
         if (t == 1) {
             return collect_log.toString();

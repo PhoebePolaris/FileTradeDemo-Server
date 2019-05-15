@@ -20,12 +20,7 @@ public class Download_logController {
 
     //add
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String post(@RequestParam(value = "file_id") String file_id,
-                       @RequestParam(value = "user_id")String user_id) {
-        Download_log download_log = new Download_log();
-        download_log.setFile_id(file_id);
-        download_log.setUser_id(user_id);
-        download_log.setLog_id(UUID.randomUUID().toString().replaceAll("-", ""));
+    public String post(@RequestBody Download_log download_log) {
         int t = download_logService.add(download_log);
         if (t == 1) {
             return download_log.toString();

@@ -19,12 +19,7 @@ public class Buy_logController {
 
     //add
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String post(@RequestParam(value = "file_id") String file_id,
-                       @RequestParam(value = "user_id")String user_id) {
-        Buy_log buy_log = new Buy_log();
-        buy_log.setFile_id(file_id);
-        buy_log.setUser_id(user_id);
-        buy_log.setLog_id(UUID.randomUUID().toString().replaceAll("-", ""));
+    public String post(@RequestBody Buy_log buy_log) {
         int t = buy_logService.add(buy_log);
         if (t == 1) {
             return buy_log.toString();

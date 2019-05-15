@@ -18,8 +18,8 @@ public class Download_logDao {
 
     //add File_label
     public int add(Download_log download_log) {
-        return jdbcTemplate.update("INSERT INTO download_log(log_id,file_id,user_id) VALUES (?, ?, ?)",
-                download_log.getLog_id(),download_log.getFile_id(),download_log.getUser_id());
+        return jdbcTemplate.update("INSERT INTO download_log(file_id,user_id) VALUES ( ?, ?)",
+                download_log.getFile_id(),download_log.getUser_id());
 
     }
 

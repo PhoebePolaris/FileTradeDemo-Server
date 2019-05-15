@@ -16,10 +16,11 @@ public class User_labelController {
 
     //add
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String post(@RequestParam(value = "user_id") String user_id
+    public String post(@RequestBody User_label user_label
+//            @RequestParam(value = "user_id") String user_id
     ) {
-        User_label user_label = new User_label();
-        user_label.setUser_id(user_id);
+//        User_label user_label = new User_label();
+//        user_label.setUser_id(user_id);
         int t = user_labelService.add(user_label);
         if (t == 1) {
             return user_label.toString();
@@ -30,13 +31,13 @@ public class User_labelController {
 
     //update
     //更新标签
-    @RequestMapping(value = "/{user_id}", method = RequestMethod.PUT)
-    public String update(@PathVariable("user_id") String user_id,
-                          @RequestParam(value = "label", required = true) String label) {
-        User_label user_label = new User_label();
-        user_label.setUser_id(user_id);
-        user_label.setLabel(label);
-
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public String update(@RequestBody User_label user_label){
+//            @PathVariable("user_id") String user_id,
+//                          @RequestParam(value = "label", required = true) String label) {
+//        User_label user_label = new User_label();
+//        user_label.setUser_id(user_id);
+//        user_label.setLabel(label);
         int t = user_labelService.update(user_label);
         if (t == 1) {
             return user_label.toString();

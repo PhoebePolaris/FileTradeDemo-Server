@@ -16,15 +16,16 @@ public class File_labelController {
 
     //add
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String post(@RequestParam(value = "file_id") String file_id,
-                        @RequestParam(value = "label_1")String label_1,
-                        @RequestParam(value = "label_2")String label_2,
-                        @RequestParam(value = "label_3")String label_3) {
-        File_label file_label = new File_label();
-        file_label.setFile_id(file_id);
-        file_label.setLabel_1(label_1);
-        file_label.setLabel_2(label_2);
-        file_label.setLabel_3(label_3);
+    public String post(@RequestBody File_label file_label){
+//            @RequestParam(value = "file_id") String file_id,
+//                        @RequestParam(value = "label_1")String label_1,
+//                        @RequestParam(value = "label_2")String label_2,
+//                        @RequestParam(value = "label_3")String label_3) {
+//        File_label file_label = new File_label();
+//        file_label.setFile_id(file_id);
+//        file_label.setLabel_1(label_1);
+//        file_label.setLabel_2(label_2);
+//        file_label.setLabel_3(label_3);
         int t = file_labelService.add(file_label);
         if (t == 1) {
             return file_label.toString();
@@ -35,17 +36,18 @@ public class File_labelController {
 
     //update
     //更新标签
-    @RequestMapping(value = "/{file_id}", method = RequestMethod.PUT)
-    public String update(@PathVariable("file_id") String file_id,
-                         @RequestParam(value = "label_1", required = true) String label_1,
-                         @RequestParam(value = "label_2", required = true) String label_2,
-                         @RequestParam(value = "label_3", required = true) String label_3) {
-        File_label file_label = new File_label();
-        file_label.setFile_id(file_id);
-        file_label.setLabel_1(label_1);
-        file_label.setLabel_2(label_2);
-        file_label.setLabel_3(label_3);
-
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public String update(@RequestBody File_label file_label){
+//            @PathVariable("file_id") String file_id,
+//                         @RequestParam(value = "label_1", required = true) String label_1,
+//                         @RequestParam(value = "label_2", required = true) String label_2,
+//                         @RequestParam(value = "label_3", required = true) String label_3) {
+//        File_label file_label = new File_label();
+//        file_label.setFile_id(file_id);
+//        file_label.setLabel_1(label_1);
+//        file_label.setLabel_2(label_2);
+//        file_label.setLabel_3(label_3);
+        //**********************加一个判断，只有creator可以修改标签
         int t = file_labelService.update(file_label);
         if (t == 1) {
             return file_label.toString();

@@ -18,8 +18,8 @@ public class File_scoreDao {
 
     //add File_label
     public int add(File_score file_score) {
-        return jdbcTemplate.update("INSERT INTO file_score(score_id,file_id,from_user_id,score) VALUES (?, ?, ?, ?)",
-                file_score.getScore_id(),file_score.getFile_id(),file_score.getFrom_user_id(),file_score.getScore());
+        return jdbcTemplate.update("INSERT INTO file_score(file_id,from_user_id,score) VALUES ( ?, ?, ?)",
+                file_score.getFile_id(),file_score.getFrom_user_id(),file_score.getScore());
 
     }
 

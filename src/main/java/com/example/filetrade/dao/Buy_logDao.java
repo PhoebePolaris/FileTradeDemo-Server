@@ -18,8 +18,8 @@ public class Buy_logDao {
 
     //add File_label
     public int add(Buy_log buy_log) {
-        return jdbcTemplate.update("INSERT INTO buy_log(log_id,file_id,user_id) VALUES (?, ?, ?)",
-                buy_log.getLog_id(),buy_log.getFile_id(),buy_log.getUser_id());
+        return jdbcTemplate.update("INSERT INTO buy_log(file_id,user_id) VALUES ( ?, ?)",
+                buy_log.getFile_id(),buy_log.getUser_id());
 
     }
 

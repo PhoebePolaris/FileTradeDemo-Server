@@ -4,7 +4,7 @@ package com.example.filetrade.entity;
  * Created by lenovo on 2019/5/15.
  */
 public class File_score {
-    private String score_id;
+//    private String score_id;
     private String file_id;
     private String from_user_id;
     private int score;
@@ -17,9 +17,9 @@ public class File_score {
         return from_user_id;
     }
 
-    public String getScore_id() {
-        return score_id;
-    }
+//    public String getScore_id() {
+//        return score_id;
+//    }
 
     public int getScore() {
         return score;
@@ -37,12 +37,12 @@ public class File_score {
         this.score = score;
     }
 
-    public void setScore_id(String score_id) {
-        this.score_id = score_id;
-    }
+//    public void setScore_id(String score_id) {
+//        this.score_id = score_id;
+//    }
 
     @Override
     public String toString() {
-        return "File_label [score_id=" + score_id + ", file_id="+file_id+", from_user_id="+from_user_id+", score=" + score + "]";
+        return "File_label [ file_id="+file_id+", from_user_id="+from_user_id+", score=" + score + "]";
     }
 }

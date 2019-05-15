@@ -17,8 +17,8 @@ public class Collect_logDao {
 
     //add File_label
     public int add(Collect_log collect_log) {
-        return jdbcTemplate.update("INSERT INTO collect_log(log_id,file_id,user_id) VALUES (?, ?, ?)",
-                collect_log.getLog_id(),collect_log.getFile_id(),collect_log.getUser_id());
+        return jdbcTemplate.update("INSERT INTO collect_log(file_id,user_id) VALUES (?, ?)",
+                collect_log.getFile_id(),collect_log.getUser_id());
 
     }
 
