@@ -21,7 +21,7 @@ public class UserService {
     }
 
     //search
-    public User findUserByUid(String uid){
-        return userDao.findUserByUid(uid);
+    public User findUserByUser_id(String user_id){
+        return userDao.findUserByUser_id(user_id);
     }
 }

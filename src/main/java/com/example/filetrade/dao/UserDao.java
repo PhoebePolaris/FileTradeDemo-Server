@@ -16,20 +16,20 @@ public class UserDao {
 
     //add user
     public int add(User user) {
-        return jdbcTemplate.update("INSERT INTO user(uid, name, credit) VALUES (?, ?, ?)",
-                user.getUid(),user.getName(),user.getCredit());
+        return jdbcTemplate.update("INSERT INTO user(user_id,phone_num,password,user_name,credit) VALUES (?, ?, ?, ?, ?)",
+                user.getUser_id(),user.getPhone_num(),user.getPassword(),user.getUser_name(),user.getCredit());
 
     }
 
     //update
     public int update(User user) {
-        return jdbcTemplate.update("UPDATE user SET name = ? , credit = ? WHERE uid=?",
-                user.getName(),user.getCredit(),user.getUid());
+        return jdbcTemplate.update("UPDATE user SET user_name = ? , credit = ? WHERE user_id=?",
+                user.getUser_name(),user.getCredit(),user.getUser_id());
     }
 
     //search
-    public User findUserByUid(String uid){
-        List<User> list = jdbcTemplate.query("SELECT * FROM user WHERE uid = ?", new Object[]{uid}, new BeanPropertyRowMapper(User.class));
+    public User findUserByUser_id(String user_id){
+        List<User> list = jdbcTemplate.query("SELECT * FROM user WHERE user_id = ?", new Object[]{user_id}, new BeanPropertyRowMapper(User.class));
         if(list!=null && list.size()>0){
             return list.get(0);
         }else{
